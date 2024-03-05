@@ -141,7 +141,6 @@ body {
   border: none;
   outline: none;
   font-size: 20px;
-  
 }
 
 #btn-encriptar {
@@ -180,7 +179,6 @@ body {
 
 .contenedor-resultado {
   border-radius: 24px;
-  
 }
 
 .btn-copiar {
@@ -201,14 +199,23 @@ textarea {
   resize: none;
 }
 
-.nombre {
+.linkedin,
+.github {
+  margin: 3px;
+  width: 40px;
+  border-radius: 10px;
+  box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.9);
+}
+
+.nombre,
+.redes-sociales {
   width: 100%;
   margin-left: 1%;
-  float: left;
+  float: right;
+  text-align: center;
   padding-top: 1%;
-  font-size: 42px;
-  text-shadow: 10px 5px 10px white;
-  text-decoration: underline;
+  font-size: 20px;
+  text-shadow: 2px 5px 10px white;
   color: white;
   font-weight: 400;
   font-family: monospace;
@@ -231,18 +238,17 @@ textarea {
   }
 
   .encriptar,
-  .encriptado, .desencriptado
-    {
+  .encriptado,
+  .desencriptado {
     float: none;
     width: 100%;
     height: auto;
     margin-bottom: 20px;
   }
 
-   .contenedor-mensaje {
+  .contenedor-mensaje {
     height: 80%;
-    
-   }
+  }
 
   .texto,
   .mensaje {
@@ -277,4 +283,3 @@ textarea {
     text-align: center;
   }
 }
-
