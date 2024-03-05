@@ -9,7 +9,7 @@ function encriptar() {
   let textoCifrado = "";
   let validarTexto = /[áéíóúÁÉÍÓÚ]/;
 
-  if (validarTexto.test(texto) ||  texto !== texto.toLowerCase()) {
+  if (validarTexto.test(texto) || texto !== texto.toLowerCase()) {
     swal(
       "Recuerda!",
       "Debes ingresar un texto en minusculas y sin acentos",
@@ -41,7 +41,6 @@ function encriptar() {
 
   if (texto.length != 0) {
     mensaje.textContent = textoCifrado;
-    document.getElementById("texto").value = "";
     encriptado.style.display = "none";
     desencriptado.style.display = "block";
     document.getElementById("btn-copiar").style.display = "block";
@@ -57,18 +56,25 @@ function encriptar() {
 function desencriptar() {
   let texto = document.getElementById("texto").value;
   let mensaje = document.getElementById("mensaje");
-  let tituloMensaje = document.getElementById("titulo-mensaje");
-  let parrafo = document.getElementById("parrafo");
   let candado = document.getElementById("candado");
-  let textoDescifrado = texto
-
-    .replace(/enter/g, "e")
-    .replace(/imes/g, "i")
-    .replace(/ai/g, "a")
-    .replace(/ober/g, "o")
-    .replace(/ufat/g, "u");
+  let textoDescifrado = texto;
 
   if (texto.length != 0) {
+    let mapping = {
+      enter: "e",
+      imes: "i",
+      ai: "a",
+      ober: "o",
+      ufat: "u",
+    };
+
+    textoDescifrado = textoDescifrado.replace(
+      /enter|imes|ai|ober|ufat/g,
+      function (matched) {
+        return mapping[matched];
+      }
+    );
+
     mensaje.textContent = textoDescifrado;
   } else {
     candado.src = "./img/candado.jpg";
@@ -77,11 +83,18 @@ function desencriptar() {
       "Ingresa el texto que deseas encriptar o desencriptar";
     swal("Ooops!", "Debes ingresar un texto", "warning");
   }
-  document.getElementById("texto").value = "";
 }
 
 function copiar() {
-  let mensaje = document.getElementById("mensaje");
-  let texto = document.getElementById("texto");
-  texto.value = mensaje.textContent;
+  let mensaje = document.getElementById("mensaje").textContent;
+  navigator.clipboard
+    .writeText(mensaje)
+    .then(() => {
+      swal("Texto copiado en portapapeles", "", "success");
+      document.getElementById("mensaje").textContent = "";
+      document.getElementById("texto").value = "";
+    })
+    .catch((err) => {
+      swal("Error al copiar el texto");
+    });
 }
