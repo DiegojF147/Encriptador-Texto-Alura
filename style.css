@@ -222,6 +222,11 @@ textarea {
   background-color: transparent;
 }
 
+.redes-sociales a {
+  display: inline-block;
+  margin-right: 10px; /* Ajusta el margen según tu diseño */
+}
+
 @media only screen and (max-width: 480px) {
   .container {
     width: 90%;

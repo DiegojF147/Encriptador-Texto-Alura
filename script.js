@@ -9,7 +9,7 @@ function encriptar() {
   let textoCifrado = "";
   let validarTexto = /[áéíóúÁÉÍÓÚ]/;
 
-  if (validarTexto.test(texto) || texto !== texto !== texto.toLowerCase()) {
+  if (validarTexto.test(texto) ||  texto !== texto.toLowerCase()) {
     swal(
       "Recuerda!",
       "Debes ingresar un texto en minusculas y sin acentos",
